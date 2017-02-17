@@ -1,7 +1,7 @@
 {
   "name": "jdash-core",
   "version": "1.0.0",
-  "description": "",
+  "description": "JDash core library",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
@@ -15,7 +15,7 @@
     "typescript": "^2.1.6",
     "@types/es6-shim": "^0.31.32"
   },
-  "author": "",
+  "author": "aibrite inc.",
   "license": "ISC",
   "dependencies": {}
 }
