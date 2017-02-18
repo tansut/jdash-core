@@ -23,18 +23,18 @@ export interface Metadata {
     publishStatus?: string;
 }
 export interface DashboardCreateModel {
-    id?: string;
-    title: string;
-    description?: string;
     user: string;
+    id?: string;
+    title?: string;
+    description?: string;
     config?: {
         [key: string]: any;
     };
 }
 export interface DashboardModel {
-    id?: string;
-    title: string;
-    config?: {
+    id: string;
+    title?: string;
+    config: {
         [key: string]: any;
     };
     description?: string;
