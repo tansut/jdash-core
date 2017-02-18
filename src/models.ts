@@ -26,18 +26,19 @@ export interface Metadata {
 }
 
 export interface DashboardCreateModel {
+    user : string;    
     id?: string;
     title?: string;
-    description: string;
-    user : string;
+    description?: string;
+    config?: { [key: string]: any };    
 }
 
 export interface DashboardModel {
-    id?: string;
-    title: string;
-    config?: { [key: string]: any };
-    layout: LayoutModel
-    meta?: Metadata;
+    id: string;
+    title?: string;
+    config: { [key: string]: any };
+    description?: string;
+    layout: LayoutModel;
 }
 
 export interface DashletPositionModel {

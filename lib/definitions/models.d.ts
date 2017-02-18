@@ -24,9 +24,12 @@ export interface Metadata {
 }
 export interface DashboardCreateModel {
     id?: string;
-    title?: string;
-    description: string;
+    title: string;
+    description?: string;
     user: string;
+    config?: {
+        [key: string]: any;
+    };
 }
 export interface DashboardModel {
     id?: string;
@@ -34,8 +37,8 @@ export interface DashboardModel {
     config?: {
         [key: string]: any;
     };
+    description?: string;
     layout: LayoutModel;
-    meta?: Metadata;
 }
 export interface DashletPositionModel {
     zone?: string;
