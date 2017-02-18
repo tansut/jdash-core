@@ -29,6 +29,7 @@ export interface DashboardCreateModel {
     id?: string;
     title?: string;
     description: string;
+    user : string;
 }
 
 export interface DashboardModel {
