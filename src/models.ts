@@ -1,3 +1,8 @@
+export var ShareWith = {
+    users: 'users',
+    everyone: 'everyone'
+}
+
 export interface Query {
     limit: number;
     startFrom?: any;
@@ -26,19 +31,23 @@ export interface Metadata {
 }
 
 export interface DashboardCreateModel {
-    user : string;    
+    user: string;
     id?: string;
     title?: string;
     description?: string;
-    config?: { [key: string]: any };    
+    shareWith?: string;
+    config?: { [key: string]: any };
 }
 
 export interface DashboardModel {
     id: string;
-    title?: string;
+    title: string;
+    appid: string;
+    user: string;
     config: { [key: string]: any };
-    description?: string;
+    description: string;
     layout: LayoutModel;
+    createdAt: Date;
 }
 
 export interface DashletPositionModel {
