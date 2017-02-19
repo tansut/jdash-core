@@ -1,3 +1,8 @@
+export interface ISearchDashboards {
+    user: string | Array<string>;
+    shareWith?: string | Array<string>;
+}
+
 export var ShareWith = {
     users: 'users',
     everyone: 'everyone'
