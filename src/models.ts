@@ -53,6 +53,8 @@ export interface DashboardModel {
     description: string;
     layout: LayoutModel;
     createdAt: Date;
+    shareWith?: string;
+
 }
 
 export interface DashletPositionModel {
