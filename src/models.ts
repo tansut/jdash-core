@@ -32,6 +32,7 @@ export interface DashboardCreateModel {
     title?: string;
     description?: string;
     shareWith?: string;
+    layout: LayoutModel;
     config?: { [key: string]: any };
 }
 
@@ -39,6 +40,7 @@ export interface DashboardUpdateModel {
     title?: string;
     description?: string;
     shareWith?: string;
+    layout?: LayoutModel;
     config?: { [key: string]: any };
 }
 
