@@ -40,6 +40,14 @@ export interface DashboardCreateModel {
         [key: string]: any;
     };
 }
+export interface DashboardUpdateModel {
+    title?: string;
+    description?: string;
+    shareWith?: string;
+    config?: {
+        [key: string]: any;
+    };
+}
 export interface DashboardModel {
     id: string;
     title: string;
