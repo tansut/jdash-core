@@ -100,7 +100,6 @@ export interface LayoutModel {
         [key: string]: LayoutDashletMetaModel;
     };
 }
-import * as axios from 'axios';
 export interface IClientProvider {
     getDashboard(id: string): Promise<DashboardModel>;
     createDashboard(model: DashboardCreateModel): Promise<CreateResult>;
@@ -121,7 +120,7 @@ export declare class JDashProvider implements IClientProvider {
     private tokenProvider;
     static getUrl(): string;
     constructor(tokenProvider: ITokenProvider);
-    request(): axios.AxiosInstance;
+    private request();
     getDashboard(id: string): Promise<DashboardModel>;
     createDashboard(model: DashboardCreateModel): Promise<CreateResult>;
     getMyDashboards(query?: Query): Promise<QueryResult<DashboardModel>>;

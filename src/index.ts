@@ -132,7 +132,7 @@ export class JDashProvider implements IClientProvider {
 
     }
 
-    request(): axios.AxiosInstance {
+    private request(): axios.AxiosInstance {
         var instance = axios.default.create({
             baseURL: JDashProvider.getUrl(),
             headers: { 'Authentication': 'Bearer ' + this.tokenProvider.userToken() }
