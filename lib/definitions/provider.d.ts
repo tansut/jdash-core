@@ -1,4 +1,4 @@
-/// <reference types="es6-shim" />
+/// <reference types="es6-promise" />
 import { ISearchDashboards } from './';
 import { Query, QueryResult, DashboardCreateModel, DashboardModel, DashboardUpdateModel, DashletCreateModel, DashletUpdateModel, CreateResult } from './models';
 export interface IClientProvider {
