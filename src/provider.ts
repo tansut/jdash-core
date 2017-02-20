@@ -3,6 +3,7 @@ import { Query, QueryResult, DashboardCreateModel, DashboardModel, DashboardUpda
 
 
 export interface IClientProvider {
+    getDashboard(id: string): Promise<DashboardModel>;
     createDashboard(model: DashboardCreateModel): Promise<CreateResult>;
     getMyDashboards(query?: Query): Promise<QueryResult<DashboardModel>>;
     searchDashboards(search?: ISearchDashboards, query?: Query): Promise<QueryResult<DashboardModel>>;
