@@ -8,10 +8,10 @@ export interface IClientProvider {
     getMyDashboards(query?: Query): Promise<QueryResult<DashboardModel>>;
     searchDashboards(search?: ISearchDashboards, query?: Query): Promise<QueryResult<DashboardModel>>;
     deleteDashboard(id: string): Promise<any>;
-    updateDashboard(id: string, updateValues: DashboardUpdateModel): Promise<any>;
+    saveDashboard(id: string, updateValues: DashboardUpdateModel): Promise<any>;
 
     createDashlet(model: DashletCreateModel): Promise<CreateResult>;
     getDashletsOfDashboard(dashboardId: string): Promise<Array<DashletCreateModel>>;
     deleteDashlet(id: string): Promise<any>;
-    updateDashlet(id: string, updateValues: DashletUpdateModel): Promise<any>;
+    saveDashlet(id: string, updateValues: DashletUpdateModel): Promise<any>;
 }
