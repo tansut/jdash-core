@@ -31,7 +31,7 @@ gulp.task('deploy', ['deploy:clean', 'tsc-def'], function () {
     bundler.add('src/index.ts');
     bundler.plugin('tsify', tsConfig.compilerOptions);
     return bundler.bundle()
-        .pipe(sourceStream('./lib/jdash-core.min.js'))
+        .pipe(sourceStream('./lib/index.js'))
         .pipe(buffer())
         .pipe(uglify())
         .pipe(gulp.dest('./'))
