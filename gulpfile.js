@@ -49,7 +49,7 @@ gulp.task('tsc', ['deploy:clean'], function () {
     var tsProject = ts.createProject('tsconfig.json');
     var tsResult = tsProject.src()
         .pipe(tsProject());
-    return merge([tsResult.js.pipe(gulp.dest('./lib'))]);
+    return merge([tsResult.dts.pipe(gulp.dest('lib/definitions')), tsResult.js.pipe(gulp.dest('./lib'))]);
 });
 
 
