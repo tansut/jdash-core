@@ -69,6 +69,7 @@ export interface DashletModel {
     configuration?: {
         [key: string]: any;
     };
+    createdAt: Date;
 }
 export interface DashletCreateModel {
     moduleId: string;

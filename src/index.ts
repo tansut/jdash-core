@@ -74,6 +74,7 @@ export interface DashletModel {
     title?: string;
     description?: string;
     configuration?: { [key: string]: any };
+    createdAt: Date;
 }
 
 export interface DashletCreateModel {
