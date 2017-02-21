@@ -6,10 +6,6 @@ export interface ISearchDashboards {
     shareWith?: string | Array<string>;
 }
 
-// export var ShareWith = {
-//     users: 'users',
-//     everyone: 'everyone'
-// }
 
 export interface Query {
     limit: number;
@@ -27,6 +23,11 @@ export interface QueryResult<T> {
 
 export interface CreateResult {
     id: string;
+}
+
+export interface GetDashboardResult {
+    dashboard: DashboardModel;
+    dashlets: Array<DashletModel>
 }
 
 export interface DashboardCreateModel {
@@ -105,105 +106,14 @@ export interface LayoutModel {
 
 
 export interface IClientProvider {
-    getDashboard(id: string): Promise<DashboardModel>;
+    getDashboard(id: string): Promise<GetDashboardResult>;
     createDashboard(model: DashboardCreateModel): Promise<CreateResult>;
     getMyDashboards(query?: Query): Promise<QueryResult<DashboardModel>>;
     searchDashboards(search?: ISearchDashboards, query?: Query): Promise<QueryResult<DashboardModel>>;
     deleteDashboard(id: string): Promise<any>;
     saveDashboard(id: string, updateValues: DashboardUpdateModel): Promise<any>;
-
     createDashlet(model: DashletCreateModel): Promise<CreateResult>;
-    getDashletsOfDashboard(dashboardId: string): Promise<Array<DashletCreateModel>>;
     deleteDashlet(id: string): Promise<any>;
     saveDashlet(id: string, updateValues: DashletUpdateModel): Promise<any>;
 }
 
-// export type fnType = () => string;
-
-// export interface ITokenProvider {
-//     apikey: string | fnType;
-//     userToken: string | fnType;
-// }
-
-
-// class ApiProvider implements IClientProvider {
-
-//     // static ProviderType = 'api';
-//     // static Register = ProviderManager.register(ApiProvider.ProviderType, ApiProvider);
-//     private tokenProvider: ITokenProvider;
-
-//     static getUrl() {
-//         return 'http://localhost:3000/jdash/api/v1'
-//     }
-
-//     init(tokenProvider: ITokenProvider) {
-//         this.tokenProvider = tokenProvider;
-//         // this.tokenProvider = <ITokenProvider>{
-//         //     userToken: () => 'sdsa',
-//         //     apikey: () => ''
-//         // }
-//     }
-
-//     constructor() {
-
-//     }
-
-//     private request(): axios.AxiosInstance {
-//         var token = typeof this.tokenProvider.userToken == 'string' ? this.tokenProvider.userToken : this.tokenProvider.userToken()
-//         var headers = token ? { 'Authentication': 'Bearer ' + token } : {}
-//         var instance = axios.default.create({
-//             baseURL: ApiProvider.getUrl(),
-//             headers: headers
-//         });
-//         return instance;
-//     }
-
-//     getDashboard(id: string): Promise<DashboardModel> {
-//         return this.request().get(`/dashboard/${id}`).then(result => result.data);
-//     }
-
-//     createDashboard(model: DashboardCreateModel): Promise<CreateResult> {
-//         return this.request().post(`/dashboard/create`, model).then(result => result.data);
-//     }
-
-//     getMyDashboards(query?: Query): Promise<QueryResult<DashboardModel>> {
-//         return this.request().get(`/dashboard/my`).then(result => result.data);
-//     }
-
-//     searchDashboards(search?: ISearchDashboards, query?: Query): Promise<QueryResult<DashboardModel>> {
-//         return this.request().post(`/dashboard/search`, {
-//             search: search,
-//             query: query
-//         }).then(result => result.data);
-//     }
-
-//     deleteDashboard(id: string): Promise<any> {
-//         return this.request().post(`/dashboard/delete/${id}`).then(result => result.data);
-//     }
-
-//     saveDashboard(id: string, updateValues: DashboardUpdateModel): Promise<any> {
-//         return this.request().post(`/dashboard/save/${id}`, updateValues).then(result => result.data);
-//     }
-
-//     createDashlet(model: DashletCreateModel): Promise<CreateResult> {
-//         return this.request().post(`/dashlet/create`, model).then(result => result.data);
-//     }
-
-//     getDashletsOfDashboard(dashboardId: string): Promise<Array<DashletCreateModel>> {
-//         return this.request().get(`/dashlet/bydashboard/${dashboardId}`).then(result => result.data);
-//     }
-
-//     deleteDashlet(id: string): Promise<any> {
-//         return this.request().post(`/dashlet/delete/${id}`).then(result => result.data);
-//     }
-
-//     saveDashlet(id: string, updateValues: DashletUpdateModel): Promise<any> {
-//         return this.request().post(`/dashlet/save/${id}`, updateValues).then(result => result.data);
-//     }
-// }
-
-// if (window) {
-//     var jdash = window['jdash'] = (window['jdash'] || {});
-//     jdash.Provider = new ApiProvider();
-//     jdash.Http = axios;
-// }

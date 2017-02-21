@@ -17,6 +17,10 @@ export interface QueryResult<T> {
 export interface CreateResult {
     id: string;
 }
+export interface GetDashboardResult {
+    dashboard: DashboardModel;
+    dashlets: Array<DashletModel>;
+}
 export interface DashboardCreateModel {
     user: string;
     id?: string;
@@ -97,14 +101,13 @@ export interface LayoutModel {
     };
 }
 export interface IClientProvider {
-    getDashboard(id: string): Promise<DashboardModel>;
+    getDashboard(id: string): Promise<GetDashboardResult>;
     createDashboard(model: DashboardCreateModel): Promise<CreateResult>;
     getMyDashboards(query?: Query): Promise<QueryResult<DashboardModel>>;
     searchDashboards(search?: ISearchDashboards, query?: Query): Promise<QueryResult<DashboardModel>>;
     deleteDashboard(id: string): Promise<any>;
     saveDashboard(id: string, updateValues: DashboardUpdateModel): Promise<any>;
     createDashlet(model: DashletCreateModel): Promise<CreateResult>;
-    getDashletsOfDashboard(dashboardId: string): Promise<Array<DashletCreateModel>>;
     deleteDashlet(id: string): Promise<any>;
     saveDashlet(id: string, updateValues: DashletUpdateModel): Promise<any>;
 }
