@@ -112,3 +112,7 @@ export interface IClientProvider {
     deleteDashlet(id: string): Promise<any>;
     saveDashlet(id: string, updateValues: DashletUpdateModel): Promise<any>;
 }
+export interface ITokenProvider {
+    apikey(): string;
+    userToken(): string;
+}

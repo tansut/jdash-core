@@ -33,7 +33,7 @@ gulp.task('deploy', ['deploy:clean', 'tsc-def'], function () {
     return bundler.bundle()
         .pipe(sourceStream('./lib/index.js'))
         .pipe(buffer())
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(gulp.dest('./'))
 })
 
