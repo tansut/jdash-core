@@ -118,9 +118,11 @@ export interface IClientProvider {
     saveDashlet(id: string, updateValues: DashletUpdateModel): Promise<any>;
 }
 
+export type fnType = () => string;
+
 export interface ITokenProvider {
-    apikey(): string;
-    userToken(): string;
+    apikey: string | fnType;
+    userToken: string | fnType;
 }
 
 
@@ -147,9 +149,10 @@ class ApiProvider implements IClientProvider {
     }
 
     private request(): axios.AxiosInstance {
+        var token = typeof this.tokenProvider.userToken == 'string' ? this.tokenProvider.userToken : this.tokenProvider.userToken()
         var instance = axios.default.create({
             baseURL: ApiProvider.getUrl(),
-            headers: { 'Authentication': 'Bearer ' + this.tokenProvider.userToken() }
+            headers: { 'Authentication': 'Bearer ' + token }
         });
         return instance;
     }
