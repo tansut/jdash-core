@@ -150,9 +150,10 @@ class ApiProvider implements IClientProvider {
 
     private request(): axios.AxiosInstance {
         var token = typeof this.tokenProvider.userToken == 'string' ? this.tokenProvider.userToken : this.tokenProvider.userToken()
+        var headers = token ? { 'Authentication': 'Bearer ' + token } : {}
         var instance = axios.default.create({
             baseURL: ApiProvider.getUrl(),
-            headers: { 'Authentication': 'Bearer ' + token }
+            headers: headers
         });
         return instance;
     }
