@@ -3,10 +3,6 @@ export interface ISearchDashboards {
     user: string | Array<string>;
     shareWith?: string | Array<string>;
 }
-export declare var ShareWith: {
-    users: string;
-    everyone: string;
-};
 export interface Query {
     limit: number;
     startFrom?: any;
@@ -111,9 +107,4 @@ export interface IClientProvider {
     getDashletsOfDashboard(dashboardId: string): Promise<Array<DashletCreateModel>>;
     deleteDashlet(id: string): Promise<any>;
     saveDashlet(id: string, updateValues: DashletUpdateModel): Promise<any>;
-}
-export declare type fnType = () => string;
-export interface ITokenProvider {
-    apikey: string | fnType;
-    userToken: string | fnType;
 }

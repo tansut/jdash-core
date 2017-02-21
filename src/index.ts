@@ -6,10 +6,10 @@ export interface ISearchDashboards {
     shareWith?: string | Array<string>;
 }
 
-export var ShareWith = {
-    users: 'users',
-    everyone: 'everyone'
-}
+// export var ShareWith = {
+//     users: 'users',
+//     everyone: 'everyone'
+// }
 
 export interface Query {
     limit: number;
@@ -118,12 +118,12 @@ export interface IClientProvider {
     saveDashlet(id: string, updateValues: DashletUpdateModel): Promise<any>;
 }
 
-export type fnType = () => string;
+// export type fnType = () => string;
 
-export interface ITokenProvider {
-    apikey: string | fnType;
-    userToken: string | fnType;
-}
+// export interface ITokenProvider {
+//     apikey: string | fnType;
+//     userToken: string | fnType;
+// }
 
 
 // class ApiProvider implements IClientProvider {
