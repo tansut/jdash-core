@@ -126,84 +126,84 @@ export interface ITokenProvider {
 }
 
 
-class ApiProvider implements IClientProvider {
+// class ApiProvider implements IClientProvider {
 
-    // static ProviderType = 'api';
-    // static Register = ProviderManager.register(ApiProvider.ProviderType, ApiProvider);
-    private tokenProvider: ITokenProvider;
+//     // static ProviderType = 'api';
+//     // static Register = ProviderManager.register(ApiProvider.ProviderType, ApiProvider);
+//     private tokenProvider: ITokenProvider;
 
-    static getUrl() {
-        return 'http://localhost:3000/jdash/api/v1'
-    }
+//     static getUrl() {
+//         return 'http://localhost:3000/jdash/api/v1'
+//     }
 
-    init(tokenProvider: ITokenProvider) {
-        this.tokenProvider = tokenProvider;
-        // this.tokenProvider = <ITokenProvider>{
-        //     userToken: () => 'sdsa',
-        //     apikey: () => ''
-        // }
-    }
+//     init(tokenProvider: ITokenProvider) {
+//         this.tokenProvider = tokenProvider;
+//         // this.tokenProvider = <ITokenProvider>{
+//         //     userToken: () => 'sdsa',
+//         //     apikey: () => ''
+//         // }
+//     }
 
-    constructor() {
+//     constructor() {
 
-    }
+//     }
 
-    private request(): axios.AxiosInstance {
-        var token = typeof this.tokenProvider.userToken == 'string' ? this.tokenProvider.userToken : this.tokenProvider.userToken()
-        var headers = token ? { 'Authentication': 'Bearer ' + token } : {}
-        var instance = axios.default.create({
-            baseURL: ApiProvider.getUrl(),
-            headers: headers
-        });
-        return instance;
-    }
+//     private request(): axios.AxiosInstance {
+//         var token = typeof this.tokenProvider.userToken == 'string' ? this.tokenProvider.userToken : this.tokenProvider.userToken()
+//         var headers = token ? { 'Authentication': 'Bearer ' + token } : {}
+//         var instance = axios.default.create({
+//             baseURL: ApiProvider.getUrl(),
+//             headers: headers
+//         });
+//         return instance;
+//     }
 
-    getDashboard(id: string): Promise<DashboardModel> {
-        return this.request().get(`/dashboard/${id}`).then(result => result.data);
-    }
+//     getDashboard(id: string): Promise<DashboardModel> {
+//         return this.request().get(`/dashboard/${id}`).then(result => result.data);
+//     }
 
-    createDashboard(model: DashboardCreateModel): Promise<CreateResult> {
-        return this.request().post(`/dashboard/create`, model).then(result => result.data);
-    }
+//     createDashboard(model: DashboardCreateModel): Promise<CreateResult> {
+//         return this.request().post(`/dashboard/create`, model).then(result => result.data);
+//     }
 
-    getMyDashboards(query?: Query): Promise<QueryResult<DashboardModel>> {
-        return this.request().get(`/dashboard/my`).then(result => result.data);
-    }
+//     getMyDashboards(query?: Query): Promise<QueryResult<DashboardModel>> {
+//         return this.request().get(`/dashboard/my`).then(result => result.data);
+//     }
 
-    searchDashboards(search?: ISearchDashboards, query?: Query): Promise<QueryResult<DashboardModel>> {
-        return this.request().post(`/dashboard/search`, {
-            search: search,
-            query: query
-        }).then(result => result.data);
-    }
+//     searchDashboards(search?: ISearchDashboards, query?: Query): Promise<QueryResult<DashboardModel>> {
+//         return this.request().post(`/dashboard/search`, {
+//             search: search,
+//             query: query
+//         }).then(result => result.data);
+//     }
 
-    deleteDashboard(id: string): Promise<any> {
-        return this.request().post(`/dashboard/delete/${id}`).then(result => result.data);
-    }
+//     deleteDashboard(id: string): Promise<any> {
+//         return this.request().post(`/dashboard/delete/${id}`).then(result => result.data);
+//     }
 
-    saveDashboard(id: string, updateValues: DashboardUpdateModel): Promise<any> {
-        return this.request().post(`/dashboard/save/${id}`, updateValues).then(result => result.data);
-    }
+//     saveDashboard(id: string, updateValues: DashboardUpdateModel): Promise<any> {
+//         return this.request().post(`/dashboard/save/${id}`, updateValues).then(result => result.data);
+//     }
 
-    createDashlet(model: DashletCreateModel): Promise<CreateResult> {
-        return this.request().post(`/dashlet/create`, model).then(result => result.data);
-    }
+//     createDashlet(model: DashletCreateModel): Promise<CreateResult> {
+//         return this.request().post(`/dashlet/create`, model).then(result => result.data);
+//     }
 
-    getDashletsOfDashboard(dashboardId: string): Promise<Array<DashletCreateModel>> {
-        return this.request().get(`/dashlet/bydashboard/${dashboardId}`).then(result => result.data);
-    }
+//     getDashletsOfDashboard(dashboardId: string): Promise<Array<DashletCreateModel>> {
+//         return this.request().get(`/dashlet/bydashboard/${dashboardId}`).then(result => result.data);
+//     }
 
-    deleteDashlet(id: string): Promise<any> {
-        return this.request().post(`/dashlet/delete/${id}`).then(result => result.data);
-    }
+//     deleteDashlet(id: string): Promise<any> {
+//         return this.request().post(`/dashlet/delete/${id}`).then(result => result.data);
+//     }
 
-    saveDashlet(id: string, updateValues: DashletUpdateModel): Promise<any> {
-        return this.request().post(`/dashlet/save/${id}`, updateValues).then(result => result.data);
-    }
-}
+//     saveDashlet(id: string, updateValues: DashletUpdateModel): Promise<any> {
+//         return this.request().post(`/dashlet/save/${id}`, updateValues).then(result => result.data);
+//     }
+// }
 
-if (window) {
-    var jdash = window['jdash'] = (window['jdash'] || {});
-    jdash.Provider = new ApiProvider();
-    jdash.Http = axios;
-}
+// if (window) {
+//     var jdash = window['jdash'] = (window['jdash'] || {});
+//     jdash.Provider = new ApiProvider();
+//     jdash.Http = axios;
+// }
