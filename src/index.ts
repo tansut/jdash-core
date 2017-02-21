@@ -31,13 +31,13 @@ export interface GetDashboardResult {
 }
 
 export interface DashboardCreateModel {
-    user: string;
     id?: string;
     title?: string;
     description?: string;
     shareWith?: string;
     layout: LayoutModel;
     config?: { [key: string]: any };
+    user?: string;
 }
 
 export interface DashboardUpdateModel {

@@ -22,7 +22,6 @@ export interface GetDashboardResult {
     dashlets: Array<DashletModel>;
 }
 export interface DashboardCreateModel {
-    user: string;
     id?: string;
     title?: string;
     description?: string;
@@ -31,6 +30,7 @@ export interface DashboardCreateModel {
     config?: {
         [key: string]: any;
     };
+    user?: string;
 }
 export interface DashboardUpdateModel {
     title?: string;
