@@ -64,3 +64,18 @@ gulp.task('deploy:clean', function (done) {
 gulp.task('dev', ['tsc'], function () {
     gulp.watch('./src/**/*.ts', ['tsc']);
 })
+
+
+
+gulp.task('npm.deploy:clean', [], function (done) {
+    del([
+        '../deploy/jdash-core/lib/**/*'
+    ], {
+            force: true
+        }).then(() => done()).catch(err => done(err))
+})
+
+gulp.task('npm.deploy', ['deploy', 'npm.deploy:clean'], function () {
+    return gulp.src(['lib/**/*'])
+        .pipe(gulp.dest('../deploy/jdash-core/lib'))
+})
